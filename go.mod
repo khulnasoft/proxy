@@ -1,6 +1,7 @@
 module github.com/khulnasoft/proxy
 
 go 1.23
+toolchain go1.24.1
 
 require (
 	github.com/census-instrumentation/opencensus-proto v0.4.1
@@ -26,6 +27,6 @@ require (
 	github.com/kr/text v0.2.0 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
-	golang.org/x/net v0.34.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
+	golang.org/x/net v0.36.0 // indirect
+	golang.org/x/text v0.22.0 // indirect
 )
