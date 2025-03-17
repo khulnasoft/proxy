@@ -1,0 +1,52 @@
+# Dot files, disallow by default, and enable explicitly
+\.*
+!\.bazelrc
+!\.bazelversion
+!\.clangd
+!\.clang-format
+!\.github
+!\.gitignore
+
+*.plist
+
+*cscope.files
+*cscope.out
+*cscope.in.out
+*cscope.po.out
+*tags
+
+# Bazel symlinks
+/bazel-*
+
+/khulnasoft-envoy
+/khulnasoft-envoy-starter
+/Dockerfile.builder-refresh
+
+/*\.dockerignore
+
+# Emacs backup files
+*~
+
+# To run Envoy tests under gdb do "cd envoy && make debug && ln -s bazel-envoy/external external"
+/external
+
+# generated from make targets
+*.ok
+/proxylib/libkhulnasoft.so
+
+# Istio porting files 
+/envoy_bootstrap*.json
+
+# Clang config is platform-specific
+/clang.bazelrc
+
+# generated for docker builds via make
+/SOURCE_VERSION
+
+/proxylib/libkhulnasoft.so*
+/proxylib/_obj*
+
+/BUILD_DEP_HASHES
+
+# clangd compilation database
+/compile_commands.json

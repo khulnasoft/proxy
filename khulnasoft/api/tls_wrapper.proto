@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "github.com/khulnasoft/proxy/go/khulnasoft/api;khulnasoft";
+
+package khulnasoft;
+
+// Empty configuration messages for Khulnasoft TLS wrapper to make Envoy happy
+message UpstreamTlsWrapperContext {
+}
+message DownstreamTlsWrapperContext {
+}

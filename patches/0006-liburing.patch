@@ -1,0 +1,24 @@
+diff --git a/bazel/foreign_cc/BUILD b/bazel/foreign_cc/BUILD
+index 60271a4925..991c1928f7 100644
+--- a/bazel/foreign_cc/BUILD
++++ b/bazel/foreign_cc/BUILD
+@@ -11,6 +11,19 @@ envoy_package()
+ configure_make(
+     name = "liburing",
+     configure_in_place = True,
++    env = select({
++        # (sayboras) Ideally, this should be passed as part of environment variables during cross-compilation,
++        # but somehow it doesn't work. So, we have to pass them manually for arm cross-compilation.
++        "//bazel:linux_aarch64": {
++            "CFLAGS": "--target=aarch64-unknown-linux-gnu -fuse-ld=lld",
++            "CPPFLAGS": "--target=aarch64-unknown-linux-gnu -fuse-ld=lld",
++            "LDFLAGS": "-Wl,-S --target=aarch64-unknown-linux-gnu -fuse-ld=lld -Wl,-no-as-needed -Wl,-z,relro,-z,now -lm -l:libstdc++.a -lc",
++            "CC": "/usr/bin/clang-17",
++            "CXX": "/usr/bin/clang-17",
++            "LD": "/usr/bin/lld-17",
++        },
++        "//conditions:default": {},
++    }),
+     lib_source = "@com_github_axboe_liburing//:all",
+     tags = [
+         "nocompdb",
